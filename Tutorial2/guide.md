@@ -34,6 +34,6 @@
 > * \d : Number
 > * () : Save part of pattern
 17. Edit urls.py (someapp)
-> 1. from . import vies
+> 1. from . import views
 > 2. Add urlpatterns 
 18. Edit views.py
