@@ -26,4 +26,14 @@
 12. admin.site.register( )
 13. python manage.py createsuperuser
 14. python manage.py runserver
-15. 
+15. Server : python manage.py collectstatic
+16. Edit urls.py (mysite)
+> ** Regex **
+> * ^ : Start
+> * $ : End
+> * \d : Number
+> * () : Save part of pattern
+17. Edit urls.py (someapp)
+> 1. from . import vies
+> 2. Add urlpatterns 
+18. Edit views.py
