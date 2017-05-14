@@ -15,11 +15,11 @@
 > 1. from django.utils import timezone
 > 2. Make class somename(models.Models)
 > 3. models have belows :
-    > * ForeignKey
-    > * CharField
-    > * TextField
-    > * UrlField
-    > * DateTimeField
+>> * ForeignKey
+>> * CharField
+>> * TextField
+>> * UrlField
+>> * DateTimeField
 9. python mange.py makemigrations someapp
 10. python mange.py migrate someapp
 11. Edit admin.py
