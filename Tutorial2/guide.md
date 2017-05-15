@@ -36,4 +36,4 @@
 17. Edit urls.py (someapp)
 > 1. from . import views
 > 2. Add urlpatterns 
-18. Edit views.py
+18. Edit views.py (render : request -> html)
