@@ -37,3 +37,7 @@
 > 1. from . import views
 > 2. Add urlpatterns 
 18. Edit views.py (render : request -> html)
+19. mkdir templates, mkdir templates/app, touch html
+20. Edit html ({% block content %})
+21. mkdir static, mkdir css, touch css
+22.
