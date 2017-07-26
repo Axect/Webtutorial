@@ -22,11 +22,29 @@
 8. python manage.py makemigrations someapp
 9. python manage.py migrate someapp
 10. Edit admin.py
-11. admin.site.register( )
-12. python manage.py createsuperuser
-13. python manage.py runserver
-14. Server : python manage.py collectstatic
-15. Edit urls.py (mysite)
+> 1. (In VS Code, install djaneiro)
+> 2. from .models import *
+> 3. Typing adminview and tab!
+> Example Code
+> ```python
+> from django.contrib import admin
+> from .models import *
+>
+>class HiAdmin(admin.ModelAdmin):
+>    '''
+>        Admin View for Hi
+>    '''
+>    list_display = ('title', 'body', 'author', 'published_date')
+>    list_filter = ('title', 'author')
+>    search_fields = ('title', 'author')
+>    list_per_page = 25
+>
+>admin.site.register(Hi, HiAdmin)
+>```
+11. python manage.py createsuperuser
+12. python manage.py runserver
+13. Server : python manage.py collectstatic
+14. Edit urls.py (mysite)
 > ** Regex **
 > * ^ : Start
 > * $ : End
