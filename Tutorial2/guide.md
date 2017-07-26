@@ -3,15 +3,14 @@
 ## Process
 
 1. Activate Virtualenv
-2. django-admin startproject nysite
-3. mv mysite othername
-4. Change settings.py 
+2. django-admin startproject mysite
+3. Change settings.py 
 > 1. TIME_ZONE = 'Asia/Seoul'
 > 2. STATIC_ROOT = os.path.join(BASE\_DIR, 'static')
-5. python manage.py migrate
-6. python manage.py startapp someapp
-7. Add app to settings.py
-8. Edit models.py
+4. python manage.py migrate
+5. python manage.py startapp someapp
+6. Add app to settings.py
+7. Edit models.py
 > 1. from django.utils import timezone
 > 2. Make class somename(models.Models)
 > 3. models have belows :
@@ -20,24 +19,23 @@
 >> * TextField
 >> * UrlField
 >> * DateTimeField
-9. python mange.py makemigrations someapp
-10. python mange.py migrate someapp
-11. Edit admin.py
-12. admin.site.register( )
-13. python manage.py createsuperuser
-14. python manage.py runserver
-15. Server : python manage.py collectstatic
-16. Edit urls.py (mysite)
+8. python manage.py makemigrations someapp
+9. python manage.py migrate someapp
+10. Edit admin.py
+11. admin.site.register( )
+12. python manage.py createsuperuser
+13. python manage.py runserver
+14. Server : python manage.py collectstatic
+15. Edit urls.py (mysite)
 > ** Regex **
 > * ^ : Start
 > * $ : End
 > * \d : Number
 > * () : Save part of pattern
-17. Edit urls.py (someapp)
+16. Edit urls.py (someapp)
 > 1. from . import views
 > 2. Add urlpatterns 
-18. Edit views.py (render : request -> html)
-19. mkdir templates, mkdir templates/app, touch html
-20. Edit html ({% block content %})
-21. mkdir static, mkdir css, touch css
-22.
+17. Edit views.py (render : request -> html)
+18. mkdir templates, mkdir templates/app, touch html
+19. Edit html ({% block content %})
+20. mkdir static, mkdir css, touch css
