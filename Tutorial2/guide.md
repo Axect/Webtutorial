@@ -50,10 +50,118 @@
 > * $ : End
 > * \d : Number
 > * () : Save part of pattern
+> ```python
+> from django.conf.urls import include, url
+> from django.contrib import admin
+>
+> admin.site.site_title = "Yonsei HEP-COSMO Admin Page"
+> admin.site.site_header = "Yonsei HEP-COSMO Admin Page"
+> 
+> urlpatterns = [
+>     url(r'^admin/', admin.site.urls),
+>     url(r'', include('HEP_COSMO.urls')),
+> ]
+> ```
 16. Edit urls.py (someapp)
 > 1. from . import views
 > 2. Add urlpatterns 
+> ```python
+> from django.conf.urls import url
+> from . import views
+>
+> urlpatterns = [
+>     url(r'^$', views.home, name='index'),
+>     url(r'^index', views.home, name='index'),
+>     url(r'^members', views.members, name='members'),
+>     url(r'^publish', views.publish, name='publish'),
+>     url(r'^research', views.research, name='research'),
+>     url(r'^calendar', views.calendar, name='calendar'),
+>     url(r'^finedust', views.finedust, name='finedust'),
+>     url(r'^link', views.link, name='link'),
+>     url(r'^arxiv', views.arxiv, name='arxiv'),
+>     url(r'contact', views.contact, name='contact'),
+> ]
+> ```
+
 17. Edit views.py (render : request -> html)
+> ```python
+> from django.shortcuts import render
+> from .models import *
+>
+> # Create your views here.
+>
+> def home(request):
+>     return render(request, 'HEP/index.html', {})
+> 
+> def members(request):
+>     persons = People.objects.order_by('index')
+>     temp = []
+>     for person in persons:
+>         temp.append(person.position)
+>     positions = []
+>     [positions.append(position) for position in temp if position not in positions]
+>     return render(request, 'HEP/members.html', {'persons': persons, 'positions': positions})
+> ```
+
 18. mkdir templates, mkdir templates/app, touch html
 19. Edit html ({% block content %})
+> ```html
+> {% load staticfiles %}
+> <html lang="en">
+> <head>
+>     <meta charset="utf-8">
+>     <meta name="viewport" content="width=device-width,  initial-scale=1.0">
+>     <meta name="description" content="Yonsei HEP-COSMO Web Page">
+>     <meta name="author" content="Axect">
+>
+>     <title>Yonsei HEP-COSMO</title>
+> 
+>     <!-- Bootstrap core CSS -->
+>     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+>     <link href="{% static 'css/image-effects.css' %}" rel="stylesheet">
+>     <link href="{% static 'css/custom-styles.css' %}" rel="stylesheet">
+>     <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">
+>     <link href="{% static 'css/font-awesome-ie7.css' %}" rel="stylesheet">
+>     <!-- Favicon -->
+>     <link rel="shortcut icon" href="{% static 'favicon.ico' %}" />
+> </head>
+> ```
+
+> ```html
+> <div class="container">
+>     <div class="row">
+>         <div class="col-md-12 col-sm-12">
+>             <div class="blist">
+>                 {% for diffyear in yearlist %}
+>                     <div class="ruler"></div>
+>                     <ul>
+>                         <li><a href="#">{{ diffyear }}</a></li>
+>                     </ul>
+>                     <div class="dlist">
+>                         <ul>
+>                             {% for article in articles %}
+>                             {% if article.year == diffyear %}
+>                                 <li>
+>                                     {{ article.people }}, &#12300;<span><i>{{ article.title }}</i></span>&#12301; 
+>                                     {% if article.journal !=  None %}
+>                                         <a href="{{ article.hyperlink }}" target="_blank">{{ article.journal }}</a>
+>                                     {% endif %}
+>                                     <a href="{{ article.arxivlink }}" target="_blank">{{ article.arxiv }}</a>
+>                                 </li>
+>                             {% endif %}
+>                             {% endfor %}
+>                         </ul>
+>                     </div>
+>                 {% endfor %}
+>                 <br />
+>                 <div class="ruler"></div>
+>                  <p>
+>                     You can find the full list from InspireHEP [<a href="https://goo.gl/AS6UKo" target="_blank">here</a>]
+>                 </p>
+>             </div>
+>         </div>
+>     </div>
+> </div>
+> ```
+
 20. mkdir static, mkdir css, touch css
