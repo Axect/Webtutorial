@@ -12,7 +12,7 @@
 6. Add app to settings.py
 7. Edit models.py
 > 1. from django.utils import timezone
-> 2. Make class somename(models.Models)
+> 2. Make class somename(models.Model)
 > 3. models have belows :
 >> * ForeignKey
 >> * CharField
